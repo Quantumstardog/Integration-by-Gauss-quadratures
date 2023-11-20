@@ -23,7 +23,7 @@ def DLegendre(n,x):
     else:
         return (n/(x**2 -1.0))*(x*Legendre(n,x) - Legendre(n-1,x))
 
-#Raices del polinomio mediante newton.raphson
+#Se define el Polinomio de Lobatto y su derivada mediante recurrencia
 
 def Lobatto(n,x):
     x=np.array(x)
@@ -41,7 +41,7 @@ def DLobatto(n,x):
          return 15*x
     else:
          return ((2*n - 1)*x*DLobatto(n-1,x) - (n+1)*DLobatto(n-2,x))/(n-2)
-    
+#Obtenemos las raíces    
 def RadauRoots(polyorder, tolerance=1e-20):
     if polyorder <2:
         global err
