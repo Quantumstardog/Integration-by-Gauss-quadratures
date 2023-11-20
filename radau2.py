@@ -22,9 +22,7 @@ def DLegendre(n,x):
         return x*0 +1.0
     else:
         return (n/(x**2 -1.0))*(x*Legendre(n,x) - Legendre(n-1,x))
-
-#Raices del polinomio mediante newton.raphson
-
+#Se define el polinomio de Radau y su derivada por recurrencia
 def Radau(n,x):
     x=np.array(x)
     return   (Legendre(n-1,x) + Legendre(n,x))/(1+x)
@@ -32,7 +30,9 @@ def Radau(n,x):
 def DRadau(n,x):
     x=np.array(x)
     return ((DLegendre(n-1,x) + DLegendre(n,x))*(1+x) - (Legendre(n-1,x) + Legendre(n,x)))/((1+x)**2)
-    
+ 
+#Raices del polinomio mediante newton.raphson
+   
 def RadauRoots(polyorder, tolerance=1e-20):
     if polyorder <2:
         global err
